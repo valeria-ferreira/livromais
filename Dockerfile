@@ -14,4 +14,4 @@ RUN ./mvnw package
 
 RUN ls -l ./target
 
-CMD ["java", "-jar", "target/livraria-SNAPSHOT.war"]
+CMD ["java", "-jar", "target\livromais-0.0.1-SNAPSHOT.war"]

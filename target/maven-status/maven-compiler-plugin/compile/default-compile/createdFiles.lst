@@ -1,16 +1,6 @@
-static\img\background.png
 com\livraria\livromais\controller\LivroController.class
 com\livraria\livromais\service\LivroService.class
-schema-postgresql.sql
 com\livraria\livromais\controller\HomeController.class
 com\livraria\livromais\LivromaisApplication.class
-application.yml
 com\livraria\livromais\model\Livro.class
-static\img\livro2.png
-application.properties
-static\img\icon.png
 com\livraria\livromais\repository\LivroRepository.class
-templates\livros.html
-templates\home.html
-static\img\ebook.png
-static\img\livro1.png
