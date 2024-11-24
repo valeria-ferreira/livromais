@@ -16,6 +16,7 @@ public class Livro {
     private String categoria;
     private Integer nota; 
     private String comentario;
+    
 
     // Getters e Setters
     public Long getId() {

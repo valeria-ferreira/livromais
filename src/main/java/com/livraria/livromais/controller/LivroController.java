@@ -26,14 +26,14 @@ public class LivroController {
     public String listarLivros(Model model) {
         model.addAttribute("livros", livroService.listarTodos());
         model.addAttribute("novoLivro", new Livro());  
-        return "livros";
+        return "livros";  
     }
 
     // Adicionar um novo livro
     @PostMapping
     public String adicionarLivro(@ModelAttribute Livro livro) {
         livroService.salvar(livro);
-        return "redirect:/livros";
+        return "redirect:/livros";  
     }
 
     // Editar livro existente
@@ -41,10 +41,10 @@ public class LivroController {
     public String editarLivro(@PathVariable Long id, Model model) {
         Livro livro = livroService.buscarPorId(id);
         if (livro != null) {
-            model.addAttribute("livro", livro);
-            return "editar-livro";
+            model.addAttribute("livro", livro);  
+            return "editar-livro"; 
         }
-        return "redirect:/livros";
+        return "redirect:/livros";  
     }
 
     // Atualizando livro editado
@@ -57,15 +57,15 @@ public class LivroController {
             livro.setCategoria(livroAtualizado.getCategoria());
             livro.setNota(livroAtualizado.getNota());
             livro.setComentario(livroAtualizado.getComentario());
-            livroService.salvar(livro);
+            livroService.salvar(livro); 
         }
-        return "redirect:/livros";
+        return "redirect:/livros"; 
     }
 
     // Excluir livro
     @PostMapping("/{id}/excluir")
     public String excluirLivro(@PathVariable Long id) {
-        livroService.excluir(id);
-        return "redirect:/livros";
+        livroService.excluir(id);  
+        return "redirect:/livros"; 
     }
 }
