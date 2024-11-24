@@ -7,10 +7,10 @@ COPY .mvn .mvn
 COPY src ./src
 
 # da permissão geral
-RUN chmod 777 mvnw 
+RUN chmod 777 mvnw
 
-# vai gerar o wor
-RUN ./mvnw packge
+# vai gerar o war
+RUN ./mvnw package
 
 RUN ls -l ./target
 
