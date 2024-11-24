@@ -39,12 +39,13 @@ public class LivroController {
     // Editar livro existente
     @GetMapping("/{id}/editar")
     public String editarLivro(@PathVariable Long id, Model model) {
-        Livro livro = livroService.buscarPorId(id);
+        Livro livro = livroService.buscarPorId(id); 
         if (livro != null) {
-            model.addAttribute("livro", livro);
-            return "editar-livro";
-        }
-        return "redirect:/livros";
+            model.addAttribute("livro", livro); 
+            return "editar-livro"; 
+        } 
+        model.addAttribute("erro", "Livro não encontrado!"); 
+        return "redirect:/livros"; 
     }
 
     // Atualizando livro editado
@@ -65,7 +66,7 @@ public class LivroController {
             return "redirect:/livros";
         } else {
             model.addAttribute("erro", "Livro não encontrado!");
-            return "redirect:/livros";  
+            return "redirect:/livros";
         }
     }
 
