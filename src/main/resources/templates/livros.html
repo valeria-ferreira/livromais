@@ -36,13 +36,42 @@
         </div>
     </div>
 
-
     <div class="container mx-auto p-4 my-8">
-        <div class="mb-4">
-            <button type="button" data-modal-toggle="modal-adicionar-livro"
-                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                Adicionar Livro</button>
-        </div>
+        <div class="container mx-auto p-4 my-8">
+            <form th:action="@{/livros}" method="post" class="mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div>
+                        <label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
+                        <input type="text" id="titulo" name="titulo" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+                    <div>
+                        <label for="autor" class="block text-sm font-medium text-gray-700">Autor</label>
+                        <input type="text" id="autor" name="autor" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+                    <div>
+                        <label for="categoria" class="block text-sm font-medium text-gray-700">Categoria</label>
+                        <input type="text" id="categoria" name="categoria" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+                    <div>
+                        <label for="nota" class="block text-sm font-medium text-gray-700">Nota</label>
+                        <input type="number" id="nota" name="nota" min="1" max="5" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="comentario" class="block text-sm font-medium text-gray-700">Comentário</label>
+                        <textarea id="comentario" name="comentario" rows="4"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        Adicionar Livro
+                    </button>
+                </div>
+            </form>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-4">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -93,59 +122,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- Modal Adicionar Livro -->
-        <div id="modal-adicionar-livro" tabindex="-1" aria-hidden="true"
-            class="fixed inset-0 flex items-center justify-center z-50 hidden">
-            <div class="relative w-full max-w-2xl p-4 bg-white rounded-lg shadow-lg">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-semibold">Adicionar Novo Livro</h3>
-                    <button data-modal-toggle="modal-adicionar-livro" class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <form action="#" th:action="@{/livros}" method="post" class="mt-4">
-                    <div class="mb-4">
-                        <label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
-                        <input type="text" id="titulo" name="titulo"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="autor" class="block text-sm font-medium text-gray-700">Autor</label>
-                        <input type="text" id="autor" name="autor"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="categoria" class="block text-sm font-medium text-gray-700">Categoria</label>
-                        <input type="text" id="categoria" name="categoria"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="nota" class="block text-sm font-medium text-gray-700">Nota</label>
-                        <input type="number" id="nota" name="nota" min="1" max="5"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="comentario" class="block text-sm font-medium text-gray-700">Comentário</label>
-                        <textarea id="comentario" name="comentario"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            rows="4"></textarea>
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="submit"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Salvar</button>
-                    </div>
-                </form>
-            </div>
         </div>
 
         <!-- Modal Editar Livro -->
@@ -225,24 +201,8 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function openEditModal(livroId) {
-            document.getElementById('modal-editar-livro').classList.remove('hidden');
-        }
-
-        function openDeleteModal(livroId) {
-            document.getElementById('modal-confirmar-excluir').classList.remove('hidden');
-        }
-
-        document.querySelectorAll('[data-modal-toggle]').forEach(button => {
-            button.addEventListener('click', () => {
-                const modalId = button.getAttribute('data-modal-toggle');
-                const modal = document.getElementById(modalId);
-                modal.classList.toggle('hidden');
-            });
-        });
-    </script>
+       <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.0/dist/flowbite.min.js"></script>
+       <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
