@@ -25,15 +25,15 @@ public class LivroController {
     @GetMapping
     public String listarLivros(Model model) {
         model.addAttribute("livros", livroService.listarTodos());
-        model.addAttribute("novoLivro", new Livro());  
-        return "livros";  
+        model.addAttribute("novoLivro", new Livro());
+        return "livros";
     }
 
     // Adicionar um novo livro
     @PostMapping
     public String adicionarLivro(@ModelAttribute Livro livro) {
         livroService.salvar(livro);
-        return "redirect:/livros";  
+        return "redirect:/livros";
     }
 
     // Editar livro existente
@@ -41,15 +41,15 @@ public class LivroController {
     public String editarLivro(@PathVariable Long id, Model model) {
         Livro livro = livroService.buscarPorId(id);
         if (livro != null) {
-            model.addAttribute("livro", livro);  
-            return "editar-livro"; 
+            model.addAttribute("livro", livro);
+            return "editar-livro";
         }
-        return "redirect:/livros";  
+        return "redirect:/livros";
     }
 
     // Atualizando livro editado
     @PostMapping("/{id}/editar")
-    public String atualizarLivro(@PathVariable Long id, @ModelAttribute Livro livroAtualizado) {
+    public String atualizarLivro(@PathVariable Long id, @ModelAttribute Livro livroAtualizado, Model model) {
         Livro livro = livroService.buscarPorId(id);
         if (livro != null) {
             livro.setTitulo(livroAtualizado.getTitulo());
@@ -57,15 +57,22 @@ public class LivroController {
             livro.setCategoria(livroAtualizado.getCategoria());
             livro.setNota(livroAtualizado.getNota());
             livro.setComentario(livroAtualizado.getComentario());
-            livroService.salvar(livro); 
+
+            // Salvndo as alterações no banco de dados
+            livroService.salvar(livro);
+
+            model.addAttribute("mensagem", "Livro atualizado com sucesso!");
+            return "redirect:/livros";
+        } else {
+            model.addAttribute("erro", "Livro não encontrado!");
+            return "redirect:/livros";  
         }
-        return "redirect:/livros"; 
     }
 
     // Excluir livro
     @PostMapping("/{id}/excluir")
     public String excluirLivro(@PathVariable Long id) {
-        livroService.excluir(id);  
-        return "redirect:/livros"; 
+        livroService.excluir(id);
+        return "redirect:/livros";
     }
 }
