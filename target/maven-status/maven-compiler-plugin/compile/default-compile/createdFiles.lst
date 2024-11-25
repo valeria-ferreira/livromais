@@ -1,6 +1,5 @@
-com\livraria\livromais\controller\LivroController.class
-com\livraria\livromais\service\LivroService.class
 com\livraria\livromais\controller\HomeController.class
 com\livraria\livromais\LivromaisApplication.class
 com\livraria\livromais\model\Livro.class
 com\livraria\livromais\repository\LivroRepository.class
+com\livraria\livromais\service\LivroService.class
